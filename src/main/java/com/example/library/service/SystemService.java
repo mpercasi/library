@@ -18,13 +18,13 @@ import java.util.Optional;
 
 @Service
 @Getter @Setter
-public class SystemService {
+public class SystemService implements DataSourceConfig{
     private List<Loan> systemLoans = new ArrayList<>();
     private List<Customer> systemCurstomers = new ArrayList<>();
     private List<LoanItem> systemItems = new ArrayList<>();
 
     @Autowired
-    private Environment environment;
+    Environment environment;
 
     public void addCustomer(Customer customer){
         systemCurstomers.add(customer);
@@ -32,5 +32,12 @@ public class SystemService {
 
     public Optional<Customer> searchCustomer(String dni){
         return systemCurstomers.stream().filter(d -> d.getDni().equals(dni)).findFirst();
+    }
+
+    @Override
+    public void setup() {
+        for (String profileName : environment.getActiveProfiles()) {
+            System.out.println("Currently active profile - " + profileName);
+        }
     }
 }
