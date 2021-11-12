@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="books.png">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3532/3532127.png">
+    <title>Confirmation</title>
+</head>
+<body>
+    <section>
+        <div id="form-container" class="rounded">
+            <form id="form" class="rounded">
+                <h1 style="text-align: center;">User saved successfully</h1>
+                <div style="width: 100%; display: flex; justify-content: center;">
+                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/48-checkmark-cross/success-green-check-mark.png" style="height: 100px;" alt="">
+                </div>
+            </form>
+        </div>
+        
+    </section>
+
+    <!--Styles-->
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html, body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        section{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: rgb(194, 194, 194);
+        }
+
+        #form-container{
+            width: 500px;
+            overflow: auto;
+        }
+
+        #form{
+            padding: 20px;
+
+            border: 1px solid #ced4da;
+            background-color: white;
+        }
+
+        .rounded{
+            border-radius: 15px;
+        }
+
+        .rounded-form{
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+        }
+
+    </style>
+</body>
+</html>
