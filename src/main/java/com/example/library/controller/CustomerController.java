@@ -44,13 +44,13 @@ public class CustomerController {
     }
 
     @PutMapping
-    public void updateCustomer(Customer customer){
+    public void updateCustomer(@RequestBody Customer customer){
         deleteCustomer(customer.getDni());
         system.addCustomer(customer);
     }
 
     @DeleteMapping("delete/{dni}")
-    public void deleteCustomer(String dni){
+    public void deleteCustomer(@PathVariable String dni){
         Optional<Customer> optionalCustomer = system.searchCustomer(dni);
         optionalCustomer.ifPresent(value -> system.getSystemCurstomers().remove(value));
     }
