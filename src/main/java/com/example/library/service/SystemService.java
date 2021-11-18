@@ -4,6 +4,7 @@ import com.example.library.configuration.DataSourceConfig;
 import com.example.library.entity.Customer;
 import com.example.library.entity.Loan;
 import com.example.library.entity.LoanItem;
+import com.example.library.repository.CustomerRepository;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,14 +25,20 @@ public class SystemService implements DataSourceConfig{
     private List<LoanItem> systemItems = new ArrayList<>();
 
     @Autowired
-    Environment environment;
+    private CustomerRepository customerRepository;
 
-    public void addCustomer(Customer customer){
-        systemCurstomers.add(customer);
+    @Autowired
+    private Environment environment;
+
+    public Customer addCustomer(Customer customer){
+        //systemCurstomers.add(customer);
+        customerRepository.save(customer);
+        return customer;
     }
 
-    public Optional<Customer> searchCustomer(String dni){
-        return systemCurstomers.stream().filter(d -> d.getDni().equals(dni)).findFirst();
+    public List<Customer> searchCustomer(String dni){
+        return customerRepository.findCustomerByDNI(dni);
+        //return systemCurstomers.stream().filter(d -> d.getDni().equals(dni)).findFirst();
     }
 
     @Override
@@ -39,5 +46,13 @@ public class SystemService implements DataSourceConfig{
         for (String profileName : environment.getActiveProfiles()) {
             System.out.println("Currently active profile - " + profileName);
         }
+    }
+
+    public void uptateCustomer(Customer customer) {
+        customerRepository.updateCustomer(customer.getName(), customer.getDni(), customer.getAddress());
+    }
+
+    public void deleteCustomer(String dni) {
+        customerRepository.deleteCustomer(dni);
     }
 }
