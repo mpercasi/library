@@ -18,6 +18,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     @Query(value = "SELECT * FROM CUSTOMERS WHERE dni=:dni", nativeQuery = true)
     List<Customer> findCustomerByDNI(String dni);
 
+    @Modifying
     @Query(value = "UPDATE CUSTOMERS SET name=:name, address=:address WHERE dni=:dni", nativeQuery = true)
     void updateCustomer(String name, String dni, String address);
 
