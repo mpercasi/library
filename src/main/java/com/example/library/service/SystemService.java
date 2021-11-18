@@ -50,6 +50,7 @@ public class SystemService implements DataSourceConfig{
 
     public void uptateCustomer(Customer customer) {
         customerRepository.updateCustomer(customer.getName(), customer.getDni(), customer.getAddress());
+        //customerRepository.save(customer);
     }
 
     public void deleteCustomer(String dni) {
